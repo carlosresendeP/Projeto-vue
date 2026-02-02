@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\StoreClientRequest;
 use App\Http\Requests\UpdateClientRequest;
 use App\Models\Client;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class ClientController extends Controller

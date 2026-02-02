@@ -2,8 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Rota web básica (opcional)
 Route::get('/', function () {
-    return response()->json([
-        'message' => 'API running'
-    ]);
+    return ['Laravel' => app()->version()];
 });

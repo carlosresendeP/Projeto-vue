@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('nome');
             $table->string('email');
             $table->boolean('avisar_por_email')->default(false);
             $table->string('whatsapp')->nullable();
