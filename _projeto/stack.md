@@ -22,7 +22,7 @@
 
 Os status das demandas foram definidos como valores controlados em formato string, seguindo a ordem do fluxo do Kanban, evitando o uso de enums no banco para manter simplicidade e clareza no MVP.
 
-# Passos que estou seguindo
+# anotações dos passos
 
 -1 planejamento -fluxo e agentes
 -2 Como iriei fazer o projeto
@@ -46,4 +46,16 @@ Os status das demandas foram definidos como valores controlados em formato strin
     (php artisan make:migration create_demands_table)
 -17 rodar as migrations
     (php artisan migrate)
+**ok**
 -18 confirmar criação das tabelas no supabase  **ok**
+
+19- Criar os models
+    (php artisan make:model Client)
+    (php artisan make:model Demand)
+**ok**
+20 - criar os Requests
+    (php artisan make:request StoreClientRequest)
+    (php artisan make:request UpdateClientRequest)
+    (php artisan make:request StoreDemandRequest)
+    (php artisan make:request UpdateDemandRequest)    
+**ok**    
