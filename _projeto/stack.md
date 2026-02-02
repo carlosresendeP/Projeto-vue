@@ -40,7 +40,10 @@ Os status das demandas foram definidos como valores controlados em formato strin
 -12 Criação do projeto no supabase
 -13 Configuração do supabase no laravel
 -14 Teste do supabase no laravel
--15 Teste de funconamento da rota no /health
-
-
-/
+-15 Teste de funconamento da rota no /health **ok**
+-16 Criação da migration para a tabela de clientes
+    (php artisan make:migration create_clients_table)
+    (php artisan make:migration create_demands_table)
+-17 rodar as migrations
+    (php artisan migrate)
+-18 confirmar criação das tabelas no supabase  **ok**
