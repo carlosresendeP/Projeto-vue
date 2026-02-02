@@ -127,3 +127,20 @@ A entidade principal do Kanban.
    - Se a transição fosse inversa (Teste -> Dev), o Backend setaria `flag_retornou = true`.
 4. **Backend:** Retorna 200 OK com o objeto atualizado.
 5. **Frontend:** Atualiza a UI para refletir a mudança (reatividade).
+
+
+
+## Contrato da API (o que o frontend vai consumir)
+Clientes
+GET    /api/clients
+POST   /api/clients
+PUT    /api/clients/{id}
+
+Demandas
+GET    /api/demands
+POST   /api/demands
+PATCH  /api/demands/{id}
+PATCH  /api/demands/{id}/status
+
+Relatório
+GET /api/reports/client/{id}?month=YYYY-MM
