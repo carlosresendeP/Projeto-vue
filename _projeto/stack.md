@@ -58,4 +58,8 @@ Os status das demandas foram definidos como valores controlados em formato strin
     (php artisan make:request UpdateClientRequest)
     (php artisan make:request StoreDemandRequest)
     (php artisan make:request UpdateDemandRequest)    
+**ok**
+21- Criar os controllers
+    (php artisan make:controller Api/ClientController)
+    (php artisan make:controller Api/DemandController)    
 **ok**    

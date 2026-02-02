@@ -2,10 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/health', function () {
+Route::get('/', function () {
     return response()->json([
-        'status' => 'ok',
-        'service' => 'backend-api',
-        'timestamp' => now(),
+        'message' => 'API running'
     ]);
 });
