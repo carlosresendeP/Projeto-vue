@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\StoreDemandRequest;
 use App\Http\Requests\UpdateDemandRequest;
 use App\Models\Demand;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class DemandController extends Controller
@@ -47,4 +48,18 @@ class DemandController extends Controller
 
         return response()->noContent();
     }
+
+    //atualizar o status de uma demanda
+    public function updateStatus(Request $request, Demand $demand)
+    {
+        $request->validate([
+            'status' => 'required|in:backlog,autorizacao,fila,em_desenvolvimento,teste,deploy,concluido'
+        ]);
+        
+        $demand->update(['status' => $request->status]);
+        
+        return response()->json($demand);
+    }
+
+
 }

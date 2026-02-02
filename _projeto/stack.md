@@ -62,4 +62,25 @@ Os status das demandas foram definidos como valores controlados em formato strin
 21- Criar os controllers
     (php artisan make:controller Api/ClientController)
     (php artisan make:controller Api/DemandController)    
-**ok**    
+**ok**
+22- Criar as rotas
+    (php artisan make:route api.php)
+23- Testar as rotas
+    (php artisan route:list)
+**ok**
+24- testar as rotas no postman para criar um cliente e uma demanda
+    client **ok**
+    demand **ok**
+    banco de dados atualizado**ok**
+
+25- adiconar updateStatus no controller de demandas
+    teste /api/demands/1/status **ok**
+    criar rota no api.php **ok**
+    testar no postman **ok**
+    http://127.0.0.1:8000/api/demands/1/status
+
+26- criar controller de relatórios
+    (php artisan make:controller Api/ReportController)
+27- colocar na rota api.php
+    e teste do relatorio mensal **ok**
+    http://127.0.0.1:8000/api/reports/clients/1?month=2026-01 **ok** (todo relatório mensal está ok)
