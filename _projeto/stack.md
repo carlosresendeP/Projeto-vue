@@ -146,4 +146,11 @@ Frontend
     testes de funcionamento das paginas **ok**
     criei um format na pasta src/utils/format.ts para formatar os dados
     atualizei um dado no demand.ts 
-    
+
+    #paginad e demandas
+    criei o DemandCard.vue para exibir as demandas conforme as informações no json 
+    criei o DemandCard.vue para centralizar as listagem de demandas 
+    criei o DemandForm.vue para gerenciar o diálogo e a criação de novos registros.
+    teste de funcionamento das demandas criar e atualizar apagar **ok**
+    criei o DemandEdit.vue para edição de demandas.
+    teste de funcionamento das demandas criar e atualizar apagar **ok**

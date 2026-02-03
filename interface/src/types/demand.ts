@@ -1,6 +1,6 @@
 export type DemandStatus = 'backlog' | 'autorizacao' | 'fila' | 'em_desenvolvimento' | 'teste' | 'deploy' | 'concluido'
 
-export type DemandPriority = 'baixa' | 'media' | 'alta'
+export type DemandPriority = 'Baixa' | 'Media' | 'Alta'
 
 export interface Demand {
   id?: number

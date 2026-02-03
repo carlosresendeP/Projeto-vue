@@ -1,18 +1,21 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted, computed, watch } from "vue";
 import { storeToRefs } from "pinia";
 import { useDemandsStore } from "../../stores/demands.store";
 import { useClientsStore } from "../../stores/clients.store";
 import type { Demand } from "../../types/demand";
 
-const props = defineProps<{ modelValue: boolean }>();
+const props = defineProps<{
+  modelValue: boolean;
+  demand: Demand | null;
+}>();
 const emit = defineEmits(["update:modelValue"]);
 
 const demandsStore = useDemandsStore();
 const clientsStore = useClientsStore();
 const { items: clients } = storeToRefs(clientsStore);
 
-// Computada para controlar o Dialog sem mutar a prop diretamente
+// Computada para controlar o Dialog
 const dialogVisible = computed({
   get: () => props.modelValue,
   set: (val) => emit("update:modelValue", val),
@@ -40,11 +43,31 @@ const initialForm: Omit<
 
 const form = ref({ ...initialForm });
 
+// Observa mudanças na demanda selecionada para preencher o formulário
+watch(
+  () => props.demand,
+  (newDemand) => {
+    if (newDemand) {
+      form.value = {
+        ...initialForm,
+        ...newDemand, // Sobrescreve com os dados da demanda
+        // Garante que booleanos e números venham corretos
+        client_id: Number(newDemand.client_id),
+        tempo_estimado: Number(newDemand.tempo_estimado),
+        tempo_gasto: Number(newDemand.tempo_gasto),
+      };
+    }
+  },
+  { immediate: true },
+);
+
 onMounted(() => {
   clientsStore.fetchClients();
 });
 
 const save = async () => {
+  if (!props.demand?.id) return;
+
   // Garantimos que os IDs e tempos sejam números antes de enviar
   const payload = {
     ...form.value,
@@ -52,22 +75,23 @@ const save = async () => {
     tempo_estimado: Number(form.value.tempo_estimado),
     tempo_gasto: Number(form.value.tempo_gasto),
   };
-  await demandsStore.addDemand(payload as Demand);
+
+  await demandsStore.editDemand(props.demand.id, payload as Demand);
   dialogVisible.value = false;
-  form.value = { ...initialForm };
+  // Não limpamos o form imediatamente pois pode ser reaberto, o watch cuida disso
 };
 </script>
 
 <template>
-  <q-dialog v-model="dialogVisible" persistent >
-    <q-card class="my-card" >
-      <q-card-section class="bg-secondary text-white row items-center q-mb-md">
-        <div class="text-h6">Configurar Demanda</div>
+  <q-dialog v-model="dialogVisible" persistent>
+    <q-card class="my-card">
+      <q-card-section class="bg-primary text-white row items-center q-mb-md">
+        <div class="text-h6">Editar Demanda #{{ demand?.id }}</div>
         <q-space />
         <q-btn icon="close" flat round dense v-close-popup />
       </q-card-section>
 
-      <q-card-section class="q-gutter-y-md scroll my-card-section" >
+      <q-card-section class="q-gutter-y-md scroll my-card-section">
         <div class="row q-col-gutter-md q-mb-md">
           <q-select
             v-model="form.client_id"
@@ -79,7 +103,7 @@ const save = async () => {
             map-options
             outlined
             dense
-            class="col-12 col-md-4 "
+            class="col-12 col-md-4"
           />
           <q-input
             v-model="form.titulo"
@@ -114,14 +138,30 @@ const save = async () => {
             label="Prioridade *"
             outlined
             dense
-            class="col-6"
+            class="col-4"
+          />
+          <q-select
+            v-model="form.status"
+            :options="[
+              'backlog',
+              'autorizacao',
+              'fila',
+              'em_desenvolvimento',
+              'teste',
+              'deploy',
+              'concluido',
+            ]"
+            label="Status *"
+            outlined
+            dense
+            class="col-4"
           />
           <q-input
             v-model="form.setor"
             label="Setor Solicitante *"
             outlined
             dense
-            class="col-6"
+            class="col-4"
           />
         </div>
 
@@ -177,11 +217,11 @@ const save = async () => {
 
       <q-separator />
 
-      <q-card-actions  class="q-pa-md">
-        <q-btn flat label="Cancelar" color="grey-7" v-close-popup   />
+      <q-card-actions class="q-pa-md">
+        <q-btn flat label="Cancelar" color="grey-7" v-close-popup />
         <q-btn
-        class="button"
-          label="Registrar Demanda"
+          class="button"
+          label="Atualizar Demanda"
           @click="save"
           :loading="demandsStore.loading"
         />
@@ -200,20 +240,18 @@ const save = async () => {
   overflow: hidden;
 }
 
-.my-card-section{
-    overflow-y: hidden;
-    width: 100%;
-    height: 100%;
+.my-card-section {
+  overflow-y: hidden;
+  width: 100%;
+  height: 100%;
 }
-.button{
-    background-color: #27e4bb;
-    color: #ffff;
-    font-weight: bold;
-}
-
-.button:hover{
-    background-color: #006de9;
-
+.button {
+  background-color: #27e4bb;
+  color: #ffff;
+  font-weight: bold;
 }
 
+.button:hover {
+  background-color: #006de9;
+}
 </style>
