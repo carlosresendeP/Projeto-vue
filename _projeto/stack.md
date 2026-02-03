@@ -114,3 +114,8 @@ Frontend
     services
     stores
     layouts  
+2- Instalação do vue-router
+    criação das rotas chamando as paginas no router/index.ts
+    modificação no main.ts adicionando app.use(router)
+    em cada uma das paginas no pages adcionei o template so para testar se iria funcionar **ok**
+
