@@ -114,9 +114,19 @@ Frontend
     services
     stores
     layouts  
+
+   -> Centralizei toda a comunicação com a API em uma camada de services, evitando chamadas diretas nos componentes
+
 2- Instalação do vue-router
     criação das rotas chamando as paginas no router/index.ts
     modificação no main.ts adicionando app.use(router)
     adicionando o routerView no App.vue
     em cada uma das paginas no pages adcionei o template so para testar se iria funcionar **ok**
+
+3- instalacao do axios e criação das chamadas da api
+    criação da logica de chamada da api no src/services/api.ts
+    criação .env para as variaveis de ambiente VITE_API_URL
+    criação dos types no src/types para tipar as respostas da api
+    criação dos services no src/services para as chamadas da api
+
 
