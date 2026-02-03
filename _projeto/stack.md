@@ -128,5 +128,10 @@ Frontend
     criação .env para as variaveis de ambiente VITE_API_URL
     criação dos types no src/types para tipar as respostas da api
     criação dos services no src/services para as chamadas da api
-
-
+    Fiz o teste de chamda api para aparecer no console do navegador para confirmar que estava funcionando
+4
+5- Instalação do pinia
+    criação do store no src/stores para as chamadas da api
+    modificação no main.ts adicionando app.use(createPinia())
+    criação dos stores para os clientes, demandas, kanban
+    utilizado composition api para os stores
