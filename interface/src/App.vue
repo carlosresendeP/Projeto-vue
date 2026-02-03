@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import Header from './components/Header.vue';
+import AppHeader from './components/layout/AppHeader.vue';
 
 </script>
 
 <template>
   <div class="container">
-    <Header />
+    <AppHeader />
     <main>
       
     </main>

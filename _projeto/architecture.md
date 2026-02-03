@@ -145,3 +145,12 @@ PATCH  /api/demands/{id}/status
 
 Relatório
 GET /api/reports/client/{id}?month=YYYY-MM
+
+
+
+frontend
+telas 
+ clientes
+ Demandas
+ kanban
+ relatorios

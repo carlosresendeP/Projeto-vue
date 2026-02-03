@@ -101,6 +101,16 @@ Os status das demandas foram definidos como valores controlados em formato strin
 
 ---
 Frontend
-
-
-    
+1- Planejamento da estrutura das 4 telas
+(arquivos vazios) 
+    -clientes
+    -demandas
+    -kanban
+    -relatorios
+    Criei a pasta src/pages
+    e nos components o layout, clients, demands, kanban e reports
+    routes
+    types clients, demands e reports  
+    services
+    stores
+    layouts  
