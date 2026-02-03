@@ -51,6 +51,8 @@ class StoreDemandRequest extends FormRequest
             ],
 
             'flag_retornou' => 'boolean',
+
+            'feedback' => 'nullable|string',
         ];
     }
 }

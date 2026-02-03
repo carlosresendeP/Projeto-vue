@@ -84,3 +84,13 @@ Os status das demandas foram definidos como valores controlados em formato strin
 27- colocar na rota api.php
     e teste do relatorio mensal **ok**
     http://127.0.0.1:8000/api/reports/clients/1?month=2026-01 **ok** (todo relatório mensal está ok)
+
+28 - falta do feedback
+    criei um nova migration para adicionar o feedback na tabela de demandas
+    (php artisan make:migration add_feedback_to_demands_table)
+    adcionei o feedback no model Demand.php
+    adcionei o feedback no updadeDemandRequest  e no storeDemandRequest
+    Teste no postman para adicionar o feedback na demanda 1 com a rota http://127.0.0.1:8000/api/demands**ok**
+    supabase recebeu o feedback **ok**
+
+    

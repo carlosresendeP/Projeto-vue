@@ -23,6 +23,7 @@ class Demand extends Model
         'tempo_gasto',
         'status',
         'flag_retornou',
+        'feedback',
     ];
 
     protected $casts = [

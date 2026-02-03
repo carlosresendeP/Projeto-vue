@@ -48,6 +48,8 @@ class UpdateDemandRequest extends FormRequest
             ],
 
             'flag_retornou' => 'sometimes|boolean',
+
+            'feedback' => 'sometimes|nullable|string',
         ];
     }
 }
