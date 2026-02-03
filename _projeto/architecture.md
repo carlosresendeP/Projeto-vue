@@ -1,6 +1,6 @@
 # Arquitetura do Projeto
 
-Este documento de arquitetura descreve como o sistema será estruturado para atender ao MVP (Minimum Viable Product/Produto Viável Mínimo) do desafio.
+Este documento de arquitetura descreve como o sistema será estruturado para atender ao MVP do desafio.
 
 ## 1. Visão Geral da Stack
 
@@ -35,10 +35,10 @@ O frontend será responsável por toda a interação com o usuário, gerenciamen
      - Componente Pai: Gerencia as colunas.
      - Componentes Filhos: `KanbanColumn`, `DemandaCard`.
      - Funcionalidade: Drag & Drop (Quasar `v-draggable` ou biblioteca externa se necessário) ou botões de ação para mover cards.
-   - **Clientes (`/clientes`):**
+   - **Clientes (`/clients`):**
      - Lista de clientes (Tabela Quasar).
      - Modal/Drawer de Cadastro/Edição.
-   - **Relatórios (`/relatorios`):**
+   - **Relatórios (`/reports`):**
      - Filtros (Mês/Cliente).
      - Exibição de Resumo (Cards de métricas).
 
@@ -56,12 +56,12 @@ O backend servirá exclusivamente como uma API JSON.
 
 ### Rotas (`routes/api.php`)
 
-- `GET /clientes`
-- `POST /clientes`
-- `GET /demandas` (com filtros)
-- `POST /demandas`
-- `PATCH /demandas/{id}/move` (para atualizar status/coluna)
-- `GET /relatorios/cliente/{id}` (dados consolidados)
+- `GET /clients`
+- `POST /clients`
+- `GET /demands` (com filtros)
+- `POST /demands`
+- `PATCH /demands/{id}` (para atualizar status/coluna)
+- `GET /reports/client/{id}` (dados consolidados)
 
 ### Camadas
 
@@ -96,7 +96,7 @@ Utilizada para popular os selects de "Responsável" e "Quem deve testar".
 - `email`
 - `role` (ex: 'dev', 'qa', 'manager') - _Opcional_
 
-### Tabela: `demandas`
+### Tabela: `demands`
 
 A entidade principal do Kanban.
 
@@ -112,6 +112,7 @@ A entidade principal do Kanban.
 - `flag_retornou` (boolean, default false)
 - `tempo_estimado` (integer, minutos)
 - `tempo_gasto` (integer, minutos)
+- `feedback` (text)
 - `timestamps` (created_at, updated_at)
 
 ---
@@ -119,7 +120,7 @@ A entidade principal do Kanban.
 ## 5. Fluxo de Trabalho (Exemplo: Mover Card)
 
 1. **Frontend:** Usuário arrasta card de "Desenvolvimento" para "Teste".
-2. **Frontend:** Dispara requisição `PATCH /api/demandas/{id}/move` com `{ status: 'Teste' }`.
+2. **Frontend:** Dispara requisição `PATCH /api/demands/{id}` com `{ status: 'Teste' }`.
 3. **Backend:**
    - Controller recebe Request.
    - Valida se a transição é permitida (opcional).

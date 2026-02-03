@@ -8,7 +8,7 @@
 
 - Frontend: SPA (Single Page Application)
 - Backend: API REST
-- Banco de Dados: Relacional
+- Banco de Dados: Relacional postgresql
 
 # Fluxo
 
@@ -26,13 +26,14 @@ Os status das demandas foram definidos como valores controlados em formato strin
 
 -1 planejamento -fluxo e agentes
 -2 Como iriei fazer o projeto
--3 Planejamento junto ao chatGpt (melhorias instalãoes corretamentes)
+-3 Planejamento junto a IA (melhorias instalações corretamente)
 -4 Criaçaõ do _projetos e seus arquivos
 -5 Instalaçao do Vue3 com o vite na pasta interface
 -6 Teste do vue3 e funcionamento
 -7 Instalaçao do quasar na pasta interface
 -8 Teste do quasar e funcionamento
 -9 Instalação do primeIcons (opcional) icones
+---
 -Backend
 -10 Instalação do laravel na pasta backend
 -11 Teste do laravel e funcionamento
@@ -92,5 +93,14 @@ Os status das demandas foram definidos como valores controlados em formato strin
     adcionei o feedback no updadeDemandRequest  e no storeDemandRequest
     Teste no postman para adicionar o feedback na demanda 1 com a rota http://127.0.0.1:8000/api/demands**ok**
     supabase recebeu o feedback **ok**
+29-Ultimos testes no backend
+    post, get, put, patch, delete **ok**
+    testes de mudança de status **ok**
+    testes de relatórios **ok**
+    deleta no supabase **ok**
+
+---
+Frontend
+
 
     

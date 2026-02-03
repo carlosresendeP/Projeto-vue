@@ -31,19 +31,19 @@ class UpdateDemandRequest extends FormRequest
 
             'cobrada_do_cliente' => 'sometimes|boolean',
 
-            'tempo_estimado' => 'nullable|integer|min:0',
-            'tempo_gasto' => 'nullable|integer|min:0',
+            'tempo_estimado' => 'sometimes|nullable|integer|min:0',
+            'tempo_gasto' => 'sometimes|nullable|integer|min:0',
 
             'status' => [
                 'sometimes',
                 Rule::in([
                     'backlog',
-                    'authorization',
-                    'queue',
-                    'in_development',
-                    'test',
+                    'autorização',
+                    'fila',
+                    'em_desenvolvimento',
+                    'testes',
                     'deploy',
-                    'done',
+                    'concluído',
                 ]),
             ],
 

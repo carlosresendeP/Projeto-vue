@@ -41,12 +41,12 @@ class StoreDemandRequest extends FormRequest
                 'required',
                 Rule::in([
                     'backlog',
-                    'authorization',
-                    'queue',
-                    'in_development',
-                    'test',
+                    'autorização',
+                    'fila',
+                    'em_desenvolvimento',
+                    'testes',
                     'deploy',
-                    'done',
+                    'concluído',
                 ]),
             ],
 
