@@ -6,7 +6,7 @@ export interface Demand {
   id?: number
   data_cadastro?: string
 
-  cliente_id: number
+  client_id: number
   titulo: string
   prioridade: DemandPriority
   setor: string

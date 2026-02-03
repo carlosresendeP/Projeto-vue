@@ -135,3 +135,15 @@ Frontend
     modificação no main.ts adicionando app.use(createPinia())
     criação dos stores para os clientes, demandas, kanban
     utilizado composition api para os stores
+
+6 criação das paginas **importante**
+
+    #pagina de clientes
+    Criação do componente ClientsTable.vue para isolar a lógica de listagem e exibição de dados.
+    Criação do componente ClientsForm.vue para gerenciar o diálogo e a criação de novos registros.
+    Remoção do clientfilter.vue não será usado no momento
+    adição do ClientsPage.vue para centralizar a pagina de clientes
+    testes de funcionamento das paginas **ok**
+    criei um format na pasta src/utils/format.ts para formatar os dados
+    atualizei um dado no demand.ts 
+    

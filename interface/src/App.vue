@@ -17,6 +17,6 @@ import { RouterView } from 'vue-router'
   .container {
     width: 100%;
     background-color: #f5f5f5;
-    height: 100vh;
+    height: 100%;
   }
 </style>
