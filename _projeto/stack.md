@@ -28,15 +28,15 @@ Os status das demandas foram definidos como valores controlados em formato strin
 -2 Como iriei fazer o projeto
 -3 Planejamento junto a IA (melhorias instalações corretamente)
 -4 Criaçaõ do _projetos e seus arquivos
--5 Instalaçao do Vue3 com o vite na pasta interface
--6 Teste do vue3 e funcionamento
+-5 Instalaçao do Vue3 com o vite na pasta interface 
+-6 Teste do vue3 e funcionamento **ok**
 -7 Instalaçao do quasar na pasta interface
--8 Teste do quasar e funcionamento
--9 Instalação do primeIcons (opcional) icones
+-8 Teste do quasar e funcionamento **ok**
+-9 Instalação do primeIcons (opcional) icones **ok**
 ---
 -Backend
 -10 Instalação do laravel na pasta backend
--11 Teste do laravel e funcionamento
+-11 Teste do laravel e funcionamento **ok**
 -supabase
 -12 Criação do projeto no supabase
 -13 Configuração do supabase no laravel
@@ -117,5 +117,6 @@ Frontend
 2- Instalação do vue-router
     criação das rotas chamando as paginas no router/index.ts
     modificação no main.ts adicionando app.use(router)
+    adicionando o routerView no App.vue
     em cada uma das paginas no pages adcionei o template so para testar se iria funcionar **ok**
 
