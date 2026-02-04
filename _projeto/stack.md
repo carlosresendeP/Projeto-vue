@@ -165,3 +165,10 @@ criei o ReportsTable.vue para exibir os relatorios em formato de tabela
 criei o ReportsCard.vue para exibir os relatorios em formato de card
 criei o ReportsTable.vue para as tabelas de relatorios
 teste de funcionamento dos relatorios filtrando o mes e o cliente teste- **ok** 
+
+
+criação do layout
+    -header
+    -sidebar
+    -footer
+    -o mainLayout ja tinha configurado
