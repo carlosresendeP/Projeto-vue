@@ -20,7 +20,6 @@ O frontend será responsável por toda a interação com o usuário, gerenciamen
 
 - `src/pages`: Telas principais (Clientes, Kanban, Relatórios).
 - `src/components`: Componentes reutilizáveis (Card de Demanda, Formulários).
-- `src/composables`: Lógica reutilizável e chamadas de API (ex: `useClientes.ts`, `useDemandas.ts`).
 - `src/layouts`: Layout principal da aplicação (Menu lateral, Header).
 
 ### Fluxo de Componentes
@@ -44,9 +43,9 @@ O frontend será responsável por toda a interação com o usuário, gerenciamen
 
 ### Comunicação com API
 
-- Utilização do **Axios** configurado globalmente (`src/boot/axios.ts`).
+- Utilização do **Axios** configurado globalmente (`src/services/api.ts`).
 - Padrão **Repository/Service** simplificado via Composables:
-  - Ex: `useDemandas` exporta `fetchDemandas`, `createDemanda`, `updateStatus`.
+  - Ex: `useDemandas` exporta `fetchDemandas`, `createDemanda`, `updateStatus`, `deleteDemanda`.
 
 ---
 
