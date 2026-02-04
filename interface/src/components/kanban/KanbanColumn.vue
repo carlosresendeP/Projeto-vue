@@ -28,38 +28,39 @@ const onChange = (event: any) => {
 
 <template>
   <div class="column-container">
-    <div
-      class="column-header text-subtitle1 text-weight-bold q-pa-sm bg-primary text-white rounded-borders"
-    >
+    <div class="column-header text-subtitle1 text-weight-bold q-pa-sm bg-primary text-white rounded-borders">
       {{ label }}
       <q-badge color="white" text-color="primary" class="float-right q-mt-xs">
         {{ demands.length }}
       </q-badge>
     </div>
 
-    <q-scroll-area
-      class="full-height q-mt-sm"
-      style="height: calc(100% - 50px)"
-    >
+    <q-scroll-area class="flex-grow q-mt-sm card" style="height: 100%">
       <draggable
         class="q-gutter-y-sm input-area"
         :list="demands"
         group="kanban"
         item-key="id"
+        :animation="250"
+        :swap-threshold="0.7"
+        :empty-insert-threshold="50"
+        ghost-class="ghost"
         @change="onChange"
-        :empty-insert-threshold="500"
       >
         <template #item="{ element }">
           <KanbanCard :demand="element" />
         </template>
-      </draggable>
 
-      <div
-        v-if="demands.length === 0"
-        class="text-center text-grey q-pa-md text-caption"
-      >
-        Arraste para cá
-      </div>
+        <template #footer>
+          <div
+            v-if="demands.length === 0"
+            class="text-center text-grey q-pa-md text-caption full-width"
+            style="pointer-events: none;" 
+          >
+            Arraste para cá
+          </div>
+        </template>
+      </draggable>
     </q-scroll-area>
   </div>
 </template>
@@ -75,7 +76,17 @@ const onChange = (event: any) => {
   display: flex;
   flex-direction: column;
 }
+
+
+/* O segredo está aqui: min-height 100% ou um valor alto no container interno */
 .input-area {
-  min-height: 50px; /* Garante área de drop mesmo vazia */
+  min-height: calc(100vh - 200px); /* Garante que a área de drop cubra quase toda a coluna */
+  padding-bottom: 100px; /* Margem extra no final para facilitar o drop */
+}
+
+.ghost {
+  opacity: 0.4;
+  background: #c8ebfb !important;
+  border: 2px dashed #1976D2;
 }
 </style>
