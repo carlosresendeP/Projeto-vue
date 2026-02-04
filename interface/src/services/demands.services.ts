@@ -19,7 +19,7 @@ export const createDemand = async (payload: Demand) => {
   const { data } = await api.post(RESOURCE, payload);
   return data;
 };
-//atualiza uma demanda (parcial)
+//atualiza uma demanda
 export const updateDemand = async (id: number, payload: Partial<Demand>) => {
   const { data } = await api.patch(`${RESOURCE}/${id}`, payload);
   return data;

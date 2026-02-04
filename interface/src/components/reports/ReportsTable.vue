@@ -31,7 +31,7 @@ const columns: QTableColumn[] = [
   {
     name: "tempo",
     label: "Tempo (Gasto/Est.)",
-    field: "tempo_gasto",
+    field: (row) => `${row.tempo_gasto || 0}h / ${row.tempo_estimado || 0}h`,
     align: "right",
   },
 ];

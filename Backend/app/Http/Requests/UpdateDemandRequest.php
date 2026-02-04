@@ -38,12 +38,12 @@ class UpdateDemandRequest extends FormRequest
                 'sometimes',
                 Rule::in([
                     'backlog',
-                    'autorização',
+                    'autorizacao',
                     'fila',
                     'em_desenvolvimento',
-                    'testes',
+                    'teste',
                     'deploy',
-                    'concluído',
+                    'concluido',
                 ]),
             ],
 

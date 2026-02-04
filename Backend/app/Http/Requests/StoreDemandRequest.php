@@ -34,19 +34,19 @@ class StoreDemandRequest extends FormRequest
 
             'cobrada_do_cliente' => 'boolean',
 
-            'tempo_estimado' => 'nullable|integer|min:0',
-            'tempo_gasto' => 'nullable|integer|min:0',
+            'tempo_estimado' => 'sometimes|nullable|integer|min:0',
+            'tempo_gasto' => 'sometimes|nullable|integer|min:0',
 
             'status' => [
                 'required',
                 Rule::in([
                     'backlog',
-                    'autorização',
+                    'autorizacao',
                     'fila',
                     'em_desenvolvimento',
-                    'testes',
+                    'teste',
                     'deploy',
-                    'concluído',
+                    'concluido',
                 ]),
             ],
 
