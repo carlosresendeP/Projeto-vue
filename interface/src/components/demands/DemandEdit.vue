@@ -68,16 +68,25 @@ onMounted(() => {
 const save = async () => {
   if (!props.demand?.id) return;
 
-  // Garantimos que os IDs e tempos sejam números antes de enviar
+  // Remove campos inválidos (relacionamentos e timestamps) e garante tipos corretos
+  const { client, created_at, updated_at, data_cadastro, id, ...cleanData } =
+    form.value as Demand;
+
   const payload = {
-    ...form.value,
+    ...cleanData,
     client_id: Number(form.value.client_id),
     tempo_estimado: Number(form.value.tempo_estimado),
     tempo_gasto: Number(form.value.tempo_gasto),
   };
 
-  await demandsStore.editDemand(props.demand.id, payload as Demand);
-  dialogVisible.value = false;
+  const success = await demandsStore.editDemand(
+    props.demand.id,
+    payload as Demand,
+  );
+
+  if (success) {
+    dialogVisible.value = false;
+  }
   // Não limpamos o form imediatamente pois pode ser reaberto, o watch cuida disso
 };
 </script>

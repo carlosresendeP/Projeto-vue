@@ -52,22 +52,26 @@ const save = async () => {
     tempo_estimado: Number(form.value.tempo_estimado),
     tempo_gasto: Number(form.value.tempo_gasto),
   };
-  await demandsStore.addDemand(payload as Demand);
-  dialogVisible.value = false;
-  form.value = { ...initialForm };
+
+  const success = await demandsStore.addDemand(payload as Demand);
+
+  if (success) {
+    dialogVisible.value = false;
+    form.value = { ...initialForm };
+  }
 };
 </script>
 
 <template>
-  <q-dialog v-model="dialogVisible" persistent >
-    <q-card class="my-card" >
+  <q-dialog v-model="dialogVisible" persistent>
+    <q-card class="my-card">
       <q-card-section class="bg-secondary text-white row items-center q-mb-md">
         <div class="text-h6">Configurar Demanda</div>
         <q-space />
         <q-btn icon="close" flat round dense v-close-popup />
       </q-card-section>
 
-      <q-card-section class="q-gutter-y-md scroll my-card-section" >
+      <q-card-section class="q-gutter-y-md scroll my-card-section">
         <div class="row q-col-gutter-md q-mb-md">
           <q-select
             v-model="form.client_id"
@@ -79,7 +83,7 @@ const save = async () => {
             map-options
             outlined
             dense
-            class="col-12 col-md-4 "
+            class="col-12 col-md-4"
           />
           <q-input
             v-model="form.titulo"
@@ -177,10 +181,10 @@ const save = async () => {
 
       <q-separator />
 
-      <q-card-actions  class="q-pa-md">
-        <q-btn flat label="Cancelar" color="grey-7" v-close-popup   />
+      <q-card-actions class="q-pa-md">
+        <q-btn flat label="Cancelar" color="grey-7" v-close-popup />
         <q-btn
-        class="button"
+          class="button"
           label="Registrar Demanda"
           @click="save"
           :loading="demandsStore.loading"
@@ -200,20 +204,18 @@ const save = async () => {
   overflow: hidden;
 }
 
-.my-card-section{
-    overflow-y: hidden;
-    width: 100%;
-    height: 100%;
+.my-card-section {
+  overflow-y: hidden;
+  width: 100%;
+  height: 100%;
 }
-.button{
-    background-color: #27e4bb;
-    color: #ffff;
-    font-weight: bold;
-}
-
-.button:hover{
-    background-color: #006de9;
-
+.button {
+  background-color: #27e4bb;
+  color: #ffff;
+  font-weight: bold;
 }
 
+.button:hover {
+  background-color: #006de9;
+}
 </style>
