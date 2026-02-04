@@ -8,7 +8,6 @@ const RESOURCE = '/clients'
 //pega todos os clientes
 export const getClients = async()=>{
     const {data} = await api.get<Client[]>(RESOURCE)
-    console.log(data)
     return data
 }
 //pega um cliente por id

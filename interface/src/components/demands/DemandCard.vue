@@ -111,12 +111,16 @@ const confirmDelete = (id: number) => {
               {{ demand.quem_deve_testar }}
             </div>
           </div>
+          <div class="q-mt-sm q-pa-sm bg-blue-grey-1 rounded-borders text-caption ">
+            <q-icon name="description" /> <b class="text-primary">Descrição:</b>
+            {{ demand.descricao_detalhada }}
+          </div>
 
           <div
             v-if="demand.feedback"
             class="q-mt-sm q-pa-sm bg-blue-grey-1 rounded-borders text-caption"
           >
-            <q-icon name="chat" /> <b>Feedback:</b> {{ demand.feedback }}
+            <q-icon name="chat" /> <b class="text-secondary">Feedback:</b> {{ demand.feedback }}
           </div>
         </q-card-section>
 

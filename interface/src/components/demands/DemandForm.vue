@@ -128,7 +128,7 @@ const save = async () => {
         <q-input
           v-model="form.descricao_detalhada"
           type="textarea"
-          label="Escopo Detalhado *"
+          label="Descrição Detalhada *"
           outlined
           dense
         />
