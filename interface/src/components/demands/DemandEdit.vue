@@ -50,8 +50,7 @@ watch(
     if (newDemand) {
       form.value = {
         ...initialForm,
-        ...newDemand, // Sobrescreve com os dados da demanda
-        // Garante que booleanos e números venham corretos
+        ...newDemand,
         client_id: Number(newDemand.client_id),
         tempo_estimado: Number(newDemand.tempo_estimado),
         tempo_gasto: Number(newDemand.tempo_gasto),
@@ -68,7 +67,7 @@ onMounted(() => {
 const save = async () => {
   if (!props.demand?.id) return;
 
-  // Remove campos inválidos (relacionamentos e timestamps) e garante tipos corretos
+  // Remove campos inválidos
   const { client, created_at, updated_at, data_cadastro, id, ...cleanData } =
     form.value as Demand;
 
@@ -87,7 +86,6 @@ const save = async () => {
   if (success) {
     dialogVisible.value = false;
   }
-  // Não limpamos o form imediatamente pois pode ser reaberto, o watch cuida disso
 };
 </script>
 

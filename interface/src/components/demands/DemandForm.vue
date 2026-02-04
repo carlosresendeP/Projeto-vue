@@ -12,7 +12,6 @@ const demandsStore = useDemandsStore();
 const clientsStore = useClientsStore();
 const { items: clients } = storeToRefs(clientsStore);
 
-// Computada para controlar o Dialog sem mutar a prop diretamente
 const dialogVisible = computed({
   get: () => props.modelValue,
   set: (val) => emit("update:modelValue", val),
@@ -45,7 +44,7 @@ onMounted(() => {
 });
 
 const save = async () => {
-  // Garantimos que os IDs e tempos sejam números antes de enviar
+  // Garantir que os IDs sejam números
   const payload = {
     ...form.value,
     client_id: Number(form.value.client_id),
