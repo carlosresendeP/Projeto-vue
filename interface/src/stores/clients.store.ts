@@ -34,6 +34,7 @@ export const useClientsStore = defineStore("clients", () => {
 
   // Adiciona um cliente
   async function addClient(payload: Client): Promise<boolean> {
+    loading.value = true;
     try {
       await createClient(payload);
       await fetchClients(); // Sincroniza a lista
@@ -51,11 +52,14 @@ export const useClientsStore = defineStore("clients", () => {
         position: "top",
       });
       return false;
+    } finally {
+      loading.value = false;
     }
   }
 
   // Edita um cliente
   async function editClient(id: number, payload: Client): Promise<boolean> {
+    loading.value = true;
     try {
       await updateClient(id, payload);
       await fetchClients();
@@ -73,11 +77,14 @@ export const useClientsStore = defineStore("clients", () => {
         position: "top",
       });
       return false;
+    } finally {
+      loading.value = false;
     }
   }
 
   // Remove um cliente
   async function removeClient(id: number): Promise<boolean> {
+    loading.value = true;
     try {
       await deleteClient(id);
       await fetchClients();
@@ -95,6 +102,8 @@ export const useClientsStore = defineStore("clients", () => {
         position: "top",
       });
       return false;
+    } finally {
+      loading.value = false;
     }
   }
 

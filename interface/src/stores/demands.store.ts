@@ -33,6 +33,7 @@ export const useDemandsStore = defineStore("demands", () => {
 
   // Adiciona uma nova demanda e sincroniza a lista
   async function addDemand(payload: Demand): Promise<boolean> {
+    loading.value = true;
     try {
       await createDemand(payload);
       await fetchDemands();
@@ -50,6 +51,8 @@ export const useDemandsStore = defineStore("demands", () => {
         position: "top",
       });
       return false;
+    } finally {
+      loading.value = false;
     }
   }
 
@@ -58,6 +61,7 @@ export const useDemandsStore = defineStore("demands", () => {
     id: number,
     payload: Partial<Demand>,
   ): Promise<boolean> {
+    loading.value = true;
     try {
       await updateDemand(id, payload);
       await fetchDemands();
@@ -75,6 +79,8 @@ export const useDemandsStore = defineStore("demands", () => {
         position: "top",
       });
       return false;
+    } finally {
+      loading.value = false;
     }
   }
 
